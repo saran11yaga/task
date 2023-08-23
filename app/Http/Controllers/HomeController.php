@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -39,5 +40,17 @@ class HomeController extends Controller
         return view('user');
     }
 
+    public function userList(Request $request){
+        $user_data = User::where('is_admin',0)->get();
+        return view('admin.user-list',["user_data"=>$user_data]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $user = User::find($request->user_id); 
+        $user->is_verified = $request->status; 
+        $user->save(); 
+        return response()->json(['success'=>'Status change successfully.']); 
+    }
 
 }

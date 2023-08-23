@@ -26,9 +26,13 @@ class RedirectIfAuthenticated
                 //return redirect(RouteServiceProvider::HOME);
                 if(Auth::user()->is_admin == 1){
                     return redirect('admin/dashboard');
-                }else{
+                }else if(Auth::user()->is_admin == 0 && Auth::user()->is_verified == 1){
                     return redirect('user/dashboard');
                 }
+                // else{
+                //     return redirect('login');
+                    
+                // }
             }
         }
 

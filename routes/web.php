@@ -30,4 +30,9 @@ Auth::routes([
    // 'reset' => false,    // Routes of Password Reset
    // 'verify' => false,   // Routes of Email Verification
   ]);
+
+  Route::get('user-list', [HomeController::class, 'userList'])->name('user-list');
+  Route::post('status/update', [HomeController::class, 'updateStatus'])->name('update.status');
+
+  
   
