@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        print_r($_SESSION); exit;
+      //  print_r($_SESSION); exit;
     }
 
     // protected function authenticated(){
